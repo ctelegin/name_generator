@@ -1,0 +1,146 @@
+<html>
+<head>
+<title>Name Generator</title>
+</head>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+}
+div {margin: 20px; color:whitesmoke; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
+input {background: dimgray; border-width: 0px; margin-right:5px; color: whitesmoke;}
+button {background: dimgray; border-width: 0px;}
+button:active {background:rgb(54, 54, 54); border-width: 0px;}
+.container {
+    margin: 30px;
+}
+.dropdown-select {
+    margin-right: 10px;
+    background: dimgray;
+    color: whitesmoke;
+}
+.caption {
+    background: rgb(64, 64, 64);
+    margin: 0px;
+    padding-left: 30px;
+    padding-top: 1px;
+    padding-bottom: 8px;
+    font-style: italic;
+}
+</style>
+<script>
+function setMeshName(){
+    setName("sm_")
+}
+function setName(firstField) {
+    var dropdowns = document.getElementsByClassName("dropdown-select");
+    console.log(dropdowns)
+    var assetName = firstField
+    Array.from(dropdowns, dropdown => {
+        element = dropdown.options[dropdown.selectedIndex].text.split(": ")[1];
+        assetName = assetName + element
+    });
+    if (assetName.endsWith("_")){
+        assetName = assetName.substring(0,assetName.length -1)
+    }
+    document.getElementById("asset_name").value = assetName;
+}
+function copyToClipboard() {
+    var copyText = document.getElementById("asset_name");
+    copyText.select();
+    copyText.setSelectionRange(0, 99)
+    document.execCommand("copy");
+    deselectAll()
+}
+function deselectAll() {
+  var element = document.activeElement;
+  
+  if (element && /INPUT|TEXTAREA/i.test(element.tagName)) {
+    if ('selectionStart' in element) {
+      element.selectionEnd = element.selectionStart;
+    }
+    element.blur();
+  }
+
+  if (window.getSelection) { // All browsers, except IE <=8
+    window.getSelection().removeAllRanges();
+  } else if (document.selection) { // IE <=8
+    document.selection.empty();
+  }
+}
+</script>
+
+<body style="background-color: rgb(44, 44, 44)" onload="setMeshName()">
+<div class="caption"><p>Mesh name generator</p></div>
+<div class="container">
+<br>
+<select class="dropdown-select" onchange = "setMeshName()" >
+<option>Block: bm_ </option>
+<option>Trim sheet: ts_ </option>
+</select>
+
+<select class="dropdown-select" onchange = "setMeshName()">
+<option>Commercial: com_</option>
+<option>Residential: res_</option>
+</select>
+
+<select class="dropdown-select" onchange = "setMeshName()" >
+<option>Block: bl_ </option>
+<option>Trim sheet: ts_ </option>
+</select>
+
+<select class="dropdown-select" onchange = "setMeshName()">
+<option>Variation: v01_</option>
+<option>Variation: v02_</option>
+<option>Variation: v03_</option>
+<option>Variation: v04_</option>
+<option>Variation: v05_</option>
+<option>Variation: v06_</option>
+<option>Variation: v07_</option>
+<option>Variation: v08_</option>
+<option>Variation: v09_</option>
+</select>
+
+<select class="dropdown-select" onchange = "setMeshName()">
+<option>Any Floor: af_</option>
+<option>Base Floor: bf_</option>
+<option>Floor: 1f_</option>
+<option>Floor: 2f_</option>
+<option>Floor: 3f_</option>
+<option>Top Floor: tf_</option>
+<option>Roof: rf_</option>
+</select>
+
+<select class="dropdown-select" onchange = "setMeshName()">
+<option>Front Side: fs_</option>
+<option>Left Side: ls_</option>
+<option>Right Side: rs_</option>
+<option>Back Side: bs_</option>
+<option>Front Left Side: fls_</option>
+<option>Front Right Side: frs_</option>
+<option>Back Left Side: bls_</option>
+<option>Back Right Side: brs_</option>
+<option>Front Back Side: fbs_</option>
+<option>Any Side: as_</option>
+</select>
+
+<select class="dropdown-select" onchange = "setMeshName()">
+<option>Not a Corner: nc_</option>
+<option>Any Corner: ac_</option>
+<option>Left Corner: lc_</option>
+<option>Right Corner: rc_</option>
+</select>
+
+<select class="dropdown-select" onchange = "setMeshName()">
+<option>Empty: em_</option>
+<option>Column: co_</option>
+<option>Door: dr_</option>
+<option>Window: wi_</option>
+</select>
+
+<p style="margin-bottom: 6px; margin-top: 30px;"> Mesh name: </p>
+<input type = "text" id = "asset_name" size = "30">
+<button onclick="copyToClipboard()">Copy to Clipboard</button>
+</div>
+</body>
+</html>
