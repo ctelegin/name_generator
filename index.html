@@ -13,6 +13,7 @@ button {background: dimgray; border-width: 0px;}
 button:active {background:rgb(54, 54, 54); border-width: 0px;}
 .container {
     margin: 30px;
+    margin-bottom: 100px;
 }
 .dropdown-select {
     margin-right: 10px;
@@ -29,12 +30,22 @@ button:active {background:rgb(54, 54, 54); border-width: 0px;}
 }
 </style>
 <script>
+function setBlockName(){
+    setName("gm_bt_", "block_name", "block_name_generator")
+}
+function setSocketName(){
+    setName("gm_st_", "socket_name", "socket_name_generator")
+}
+function initNameElements(){
+    setBlockName();
+    setSocketName();
+}
 function setMeshName(){
     setName("sm_")
 }
-function setName(firstField) {
-    var dropdowns = document.getElementsByClassName("dropdown-select");
-    console.log(dropdowns)
+function setName(firstField, doc_element, parent_div) {
+    var parent_div = document.getElementById(parent_div);
+    var dropdowns = parent_div.getElementsByClassName("dropdown-select");
     var assetName = firstField
     Array.from(dropdowns, dropdown => {
         element = dropdown.options[dropdown.selectedIndex].text.split(": ")[1];
@@ -43,7 +54,7 @@ function setName(firstField) {
     if (assetName.endsWith("_")){
         assetName = assetName.substring(0,assetName.length -1)
     }
-    document.getElementById("asset_name").value = assetName;
+    document.getElementById(doc_element).value = assetName;
 }
 function copyToClipboard() {
     var copyText = document.getElementById("asset_name");
@@ -70,21 +81,17 @@ function deselectAll() {
 }
 </script>
 
-<body style="background-color: rgb(44, 44, 44)" onload="setMeshName()">
-<div class="caption"><p>Mesh name generator</p></div>
-<div class="container">
+<body style="background-color: rgb(44, 44, 44)" onload="initNameElements()">
+<div class="caption" style="background: rgb(54, 0, 99);"><p>Block name generator</p></div>
+<div id="block_name_generator" class="container">
 <br>
-<select class="dropdown-select" onchange = "setMeshName()" >
-<option>Block Type: bt_ </option>
-<option>Socket Type: st_ </option>
-</select>
 
-<select class="dropdown-select" onchange = "setMeshName()">
+<select class="dropdown-select" onchange = "setBlockName()">
 <option>Commercial: com_</option>
 <option>Residential: res_</option>
 </select>
 
-<select class="dropdown-select" onchange = "setMeshName()">
+<select class="dropdown-select" onchange = "setBlockName()">
 <option>Variation: v01_</option>
 <option>Variation: v02_</option>
 <option>Variation: v03_</option>
@@ -96,7 +103,7 @@ function deselectAll() {
 <option>Variation: v09_</option>
 </select>
 
-<select class="dropdown-select" onchange = "setMeshName()">
+<select class="dropdown-select" onchange = "setBlockName()">
 <option>Any Floor: af_</option>
 <option>Base Floor: bf_</option>
 <option>Floor: 1f_</option>
@@ -106,7 +113,7 @@ function deselectAll() {
 <option>Roof: rf_</option>
 </select>
 
-<select class="dropdown-select" onchange = "setMeshName()">
+<select class="dropdown-select" onchange = "setBlockName()">
 <option>Front Side: fs_</option>
 <option>Left Side: ls_</option>
 <option>Right Side: rs_</option>
@@ -120,14 +127,14 @@ function deselectAll() {
 <option>Any Side: as_</option>
 </select>
 
-<select class="dropdown-select" onchange = "setMeshName()">
+<select class="dropdown-select" onchange = "setBlockName()">
 <option>Not a Corner: nc_</option>
 <option>Any Corner: ac_</option>
 <option>Left Corner: lc_</option>
 <option>Right Corner: rc_</option>
 </select>
 
-<select class="dropdown-select" onchange = "setMeshName()">
+<select class="dropdown-select" onchange = "setBlockName()">
 <option>Empty: em_</option>
 <option>Column: co_</option>
 <option>Door: dr_</option>
@@ -135,7 +142,57 @@ function deselectAll() {
 </select>
 
 <p style="margin-bottom: 6px; margin-top: 30px;"> Mesh name: </p>
-<input type = "text" id = "asset_name" size = "30">
+<input type = "text" id = "block_name" size = "30">
+<button onclick="copyToClipboard()">Copy to Clipboard</button>
+</div>
+
+<div class="caption" style="background: rgb(0, 66, 0);"><p>Socket name generator</p></div>
+<div id="socket_name_generator" class="container">
+<br>
+
+<select class="dropdown-select" onchange = "setSocketName()">
+<option>Commercial: com_</option>
+<option>Residential: res_</option>
+</select>
+
+<select class="dropdown-select" onchange = "setSocketName()">
+<option>Variation: v01_</option>
+<option>Variation: v02_</option>
+<option>Variation: v03_</option>
+<option>Variation: v04_</option>
+<option>Variation: v05_</option>
+<option>Variation: v06_</option>
+<option>Variation: v07_</option>
+<option>Variation: v08_</option>
+<option>Variation: v09_</option>
+</select>
+
+<select class="dropdown-select" onchange = "setSocketName()">
+<option>Any Floor: af_</option>
+<option>Base Floor: bf_</option>
+<option>Floor: 1f_</option>
+<option>Floor: 2f_</option>
+<option>Floor: 3f_</option>
+<option>Top Floor: tf_</option>
+<option>Roof: rf_</option>
+</select>
+
+<select class="dropdown-select" onchange = "setSocketName()">
+<option>Not a Corner: nc_</option>
+<option>Any Corner: ac_</option>
+<option>Left Corner: lc_</option>
+<option>Right Corner: rc_</option>
+</select>
+
+<select class="dropdown-select" onchange = "setSocketName()">
+<option>Main block: mb_</option>
+<option>Storefront: sf_</option>
+<option>Logo: lg_</option>
+<option>Gate: gt_</option>
+</select>
+
+<p style="margin-bottom: 6px; margin-top: 30px;"> Mesh name: </p>
+<input type = "text" id = "socket_name" size = "30">
 <button onclick="copyToClipboard()">Copy to Clipboard</button>
 </div>
 </body>
