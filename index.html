@@ -56,8 +56,8 @@ function setName(firstField, doc_element, parent_div) {
     }
     document.getElementById(doc_element).value = assetName;
 }
-function copyToClipboard() {
-    var copyText = document.getElementById("asset_name");
+function copyToClipboard(field_name) {
+    var copyText = document.getElementById(field_name);
     copyText.select();
     copyText.setSelectionRange(0, 99)
     document.execCommand("copy");
@@ -143,7 +143,7 @@ function deselectAll() {
 
 <p style="margin-bottom: 6px; margin-top: 30px;"> Mesh name: </p>
 <input type = "text" id = "block_name" size = "30">
-<button onclick="copyToClipboard()">Copy to Clipboard</button>
+<button onclick="copyToClipboard('block_name')">Copy to Clipboard</button>
 </div>
 
 <div class="caption" style="background: rgb(0, 66, 0);"><p>Socket name generator</p></div>
@@ -193,7 +193,7 @@ function deselectAll() {
 
 <p style="margin-bottom: 6px; margin-top: 30px;"> Mesh name: </p>
 <input type = "text" id = "socket_name" size = "30">
-<button onclick="copyToClipboard()">Copy to Clipboard</button>
+<button onclick="copyToClipboard('socket_name')">Copy to Clipboard</button>
 </div>
 </body>
 </html>
