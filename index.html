@@ -139,6 +139,7 @@ function deselectAll() {
 <option>Column: co_</option>
 <option>Door: dr_</option>
 <option>Window: wi_</option>
+<option>Logo: lg_</option>
 </select>
 
 <p style="margin-bottom: 6px; margin-top: 30px;"> Mesh name: </p>
@@ -175,6 +176,20 @@ function deselectAll() {
 <option>Floor: 3f_</option>
 <option>Top Floor: tf_</option>
 <option>Roof: rf_</option>
+</select>
+
+<select class="dropdown-select" onchange = "setBlockName()">
+<option>Front Side: fs_</option>
+<option>Left Side: ls_</option>
+<option>Right Side: rs_</option>
+<option>Back Side: bs_</option>
+<option>Front Left Side: fls_</option>
+<option>Front Right Side: frs_</option>
+<option>Back Left Side: bls_</option>
+<option>Back Right Side: brs_</option>
+<option>Front Back Side: fbs_</option>
+<option>Left Right Side: lrs_</option>
+<option>Any Side: as_</option>
 </select>
 
 <select class="dropdown-select" onchange = "setSocketName()">
