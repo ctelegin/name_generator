@@ -86,7 +86,7 @@ function deselectAll() {
 </script>
 
 <body style="background-color: rgb(44, 44, 44)" onload="initNameElements()">
-<div class="caption" style="background: rgb(54, 0, 99);"><p>Block name generator</p></div>
+<div id="bngc" class="caption" style="background: rgb(54, 0, 99);"><p>Block name generator</p></div>
 <div id="block_name_generator" class="container">
 <br>
 
@@ -152,7 +152,7 @@ function deselectAll() {
 <button onclick="copyToClipboard('block_name')">Copy to Clipboard</button>
 </div>
 
-<div class="caption" style="background: rgb(0, 66, 0);"><p>Socket name generator</p></div>
+<div id="sngc" class="caption" style="background: rgb(0, 66, 0);"><p>Socket name generator</p></div>
 <div id="socket_name_generator" class="container">
 <br>
 
@@ -219,7 +219,7 @@ function deselectAll() {
 </div>
 
 
-<div class="caption" style="background: rgb(139, 67, 0);"><p>Texture name generator</p></div>
+<div id="tngc" class="caption" style="background: rgb(110, 30, 0);"><p>Texture name generator</p></div>
 <div id="texture_name_generator" class="container">
 <br>
 
@@ -257,5 +257,6 @@ function deselectAll() {
 <input type = "text" id = "texture_name" size = "30">
 <button onclick="copyToClipboard('texture_name')">Copy to Clipboard</button>
 </div>
+<div style="margin-bottom: 1000px"></div>
 </body>
 </html>
