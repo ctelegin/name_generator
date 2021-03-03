@@ -36,9 +36,13 @@ function setBlockName(){
 function setSocketName(){
     setName("gm_st_", "socket_name", "socket_name_generator")
 }
+function setTextureName(){
+    setName("T_", "texture_name", "texture_name_generator")
+}
 function initNameElements(){
     setBlockName();
     setSocketName();
+    setTextureName();
 }
 function setMeshName(){
     setName("sm_")
@@ -179,7 +183,7 @@ function deselectAll() {
 <option>Roof: rf_</option>
 </select>
 
-<select class="dropdown-select" onchange = "setBlockName()">
+<select class="dropdown-select" onchange = "setSocketName()">
 <option>Front Side: fs_</option>
 <option>Left Side: ls_</option>
 <option>Right Side: rs_</option>
@@ -212,6 +216,46 @@ function deselectAll() {
 <p style="margin-bottom: 6px; margin-top: 30px;"> Mesh name: </p>
 <input type = "text" id = "socket_name" size = "30">
 <button onclick="copyToClipboard('socket_name')">Copy to Clipboard</button>
+</div>
+
+
+<div class="caption" style="background: rgb(139, 67, 0);"><p>Texture name generator</p></div>
+<div id="texture_name_generator" class="container">
+<br>
+
+<select class="dropdown-select" onchange = "setTextureName()">
+<option>Surface kind: Concrete_</option>
+<option>Surface kind: Bricks_</option>
+</select>
+
+<select class="dropdown-select" onchange = "setTextureName()">
+<option>Variation: A_</option>
+<option>Variation: B_</option>
+<option>Variation: C_</option>
+<option>Variation: D_</option>
+<option>Variation: E_</option>
+<option>Variation: F_</option>
+<option>Variation: G_</option>
+<option>Variation: H_</option>
+<option>Variation: U_</option>
+<option>Variation: I_</option>
+</select>
+
+<select class="dropdown-select" onchange = "setTextureName()">
+<option>Subvariant: Regular_</option>
+<option>Subvariant: Damaged_</option>
+<option>Subvariant: DirectorsCut_</option>
+</select>
+
+<select class="dropdown-select" onchange = "setTextureName()">
+<option>Material input: Albedo_</option>
+<option>Material input: ORM_</option>
+<option>Material input: Normal_</option>
+</select>
+
+<p style="margin-bottom: 6px; margin-top: 30px;"> Texture name: </p>
+<input type = "text" id = "texture_name" size = "30">
+<button onclick="copyToClipboard('texture_name')">Copy to Clipboard</button>
 </div>
 </body>
 </html>
